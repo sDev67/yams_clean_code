@@ -1,9 +1,11 @@
-const SCORE_BRELAN = 28;
-const SCORE_FULL = 30;
-const SCORE_SQUARE = 35;
-const SCORE_BIG_SUITE = 40;
-const SCORE_YAMS = 50;
-const SCORE_ERROR = 0;
+const SCORE = {
+  BRELAN: 28,
+  FULL: 30,
+  SQUARE: 35,
+  BIG_SUITE: 40,
+  YAMS: 50,
+  ERROR: 0,
+};
 
 function getDicesCount(dices) {
   const counts = {};
@@ -43,7 +45,8 @@ function isSquare(dices) {
 }
 
 function isFull(dices) {
-  //
+  const counts = getDicesCount(dices);
+  return Object.values(counts).includes(3) && Object.values(counts).includes(2);
 }
 
 function isBigSuite(dices) {
@@ -60,27 +63,27 @@ function isLuck(dices) {
 
 function calculateDiceGameScore(dices) {
   if (!dices || dices.length === 0) {
-    return SCORE_ERROR;
-  }
-
-  if (isBrelan(dices)) {
-    return SCORE_BRELAN;
+    return SCORE.ERROR;
   }
 
   if (isSquare(dices)) {
-    return SCORE_SQUARE;
+    return SCORE.SQUARE;
   }
 
   if (isFull(dices)) {
-    return SCORE_FULL;
+    return SCORE.FULL;
+  }
+
+  if (isBrelan(dices)) {
+    return SCORE.BRELAN;
   }
 
   if (isBigSuite(dices)) {
-    return SCORE_BIG_SUITE;
+    return SCORE.BIG_SUITE;
   }
 
   if (isYams(dices)) {
-    return SCORE_YAMS;
+    return SCORE.YAMS;
   }
 
   if (isLuck(dices)) {
@@ -90,4 +93,5 @@ function calculateDiceGameScore(dices) {
 
 module.exports = {
   calculateDiceGameScore,
+  SCORE,
 };

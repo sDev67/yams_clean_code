@@ -26,7 +26,22 @@ function isBrelan(dices) {
 }
 
 function isSquare(dices) {
-    //
+  const counts = {};
+
+  for (const dice of dices) {
+    if (counts[dice]) {
+      counts[dice]++;
+    } else {
+      counts[dice] = 1;
+    }
+  }
+  for (const count of Object.keys(counts)) {
+    if (counts[count] === 4) {
+      return true;
+    }
+  }
+
+  return false;
 }
 
 function isFull(dices) {

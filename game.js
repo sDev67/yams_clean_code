@@ -50,7 +50,16 @@ function isFull(dices) {
 }
 
 function isBigSuite(dices) {
-  //
+
+    const sortedDices = dices.sort();
+    const firstDice = sortedDices[0];
+    console.log("firstDice", firstDice);
+    for (let i = 1; i < sortedDices.length; i++) {
+        if (sortedDices[i] !== firstDice + i) {
+            return false;
+        }
+    }
+    return true;
 }
 
 function isYams(dices) {

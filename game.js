@@ -54,7 +54,18 @@ function isBigSuite(dices) {
 }
 
 function isYams(dices) {
-  //
+  console.log("dices", dices);
+  let allSameDices = true;
+  for (let i = 1; i < dices.length; i++) {
+    console.log(dices[i]);
+    if (dices[i] !== dices[0]) {
+      console.log("non yams");
+      allSameDices = false;
+      break;
+    }
+    console.log("yams");
+  }
+  return allSameDices;
 }
 
 function isLuck(dices) {

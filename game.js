@@ -64,10 +64,6 @@ function isYams(dices) {
   return allSameDices;
 }
 
-function isLuck(dices) {
-  //
-}
-
 function calculateDiceGameScore(dices) {
   if (!dices || dices.length === 0) {
     return SCORE.ERROR;
@@ -93,9 +89,13 @@ function calculateDiceGameScore(dices) {
     return SCORE.YAMS;
   }
 
-  if (isLuck(dices)) {
-    return 0;
+  // if none of previous case match we are in luck case
+  let sum = 0;
+  for (const dice of dices) {
+    sum += dice;
   }
+
+  return sum;
 }
 
 module.exports = {

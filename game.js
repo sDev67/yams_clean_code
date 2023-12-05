@@ -5,7 +5,7 @@ const SCORE_BIG_SUITE = 40;
 const SCORE_YAMS = 50;
 const SCORE_ERROR = 0;
 
-function isBrelan(dices) {
+function getDicesCount(dices) {
   const counts = {};
 
   for (const dice of dices) {
@@ -15,6 +15,12 @@ function isBrelan(dices) {
       counts[dice] = 1;
     }
   }
+
+  return counts;
+}
+
+function isBrelan(dices) {
+  const counts = getDicesCount(dices);
 
   for (const count of Object.values(counts)) {
     if (count === 3) {
@@ -26,15 +32,7 @@ function isBrelan(dices) {
 }
 
 function isSquare(dices) {
-  const counts = {};
-
-  for (const dice of dices) {
-    if (counts[dice]) {
-      counts[dice]++;
-    } else {
-      counts[dice] = 1;
-    }
-  }
+  const counts = getDicesCount(dices);
   for (const count of Object.keys(counts)) {
     if (counts[count] === 4) {
       return true;

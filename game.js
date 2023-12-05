@@ -25,15 +25,54 @@ function isBrelan(dices) {
   return false;
 }
 
+function isSquare(dices) {
+    //
+}
+
+function isFull(dices) {
+  //
+}
+
+function isBigSuite(dices) {
+  //
+}
+
+function isYams(dices) {
+  //
+}
+
+function isLuck(dices) {
+  //
+}
+
 function calculateDiceGameScore(dices) {
   if (!dices || dices.length === 0) {
     return SCORE_ERROR;
   }
-  
+
   if (isBrelan(dices)) {
     return SCORE_BRELAN;
   }
 
+  if (isSquare(dices)) {
+    return SCORE_SQUARE;
+  }
+
+  if (isFull(dices)) {
+    return SCORE_FULL;
+  }
+
+  if (isBigSuite(dices)) {
+    return SCORE_BIG_SUITE;
+  }
+
+  if (isYams(dices)) {
+    return SCORE_YAMS;
+  }
+
+  if (isLuck(dices)) {
+    return 0;
+  }
 }
 
 module.exports = {
